@@ -79,7 +79,16 @@ try:
         EC.presence_of_element_located((By.ID, "submit-btn"))
     )
     scroll(browser, button)
-    button.click()
+    #browser.execute_script("arguments[0].click();", button)
+
+    alert = wait.until(
+        EC.alert_is_present(),
+    )
+    if alert.text == "Message received!":
+        #alert.accept()
+        pass
+    else:
+        print("Message was not received.")
 
 
 
