@@ -2,23 +2,19 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
+from utils import scroll
 import time
 
 browser = webdriver.Chrome()
 link = "https://practice-automation.com/form-fields/"
 browser.get(link)
-
-
-def scroll(browser, element):
-    browser.execute_script("arguments[0].scrollIntoView();", element)
+browser.implicitly_wait(15)
 
 
 # Дадим странице время полностью загрузиться
-time.sleep(3)
 wait = WebDriverWait(browser, 3)
 
-try:
-
+def test_try():
     name_field = wait.until(
         EC.presence_of_element_located((By.ID, "name-input"))
     )
@@ -79,19 +75,9 @@ try:
         EC.presence_of_element_located((By.ID, "submit-btn"))
     )
     scroll(browser, button)
-    #browser.execute_script("arguments[0].click();", button)
+    browser.execute_script("arguments[0].click();", button)
 
     alert = wait.until(
         EC.alert_is_present(),
     )
-    if alert.text == "Message received!":
-        #alert.accept()
-        pass
-    else:
-        print("Message was not received.")
-
-
-
-finally:
-    time.sleep(30)
-    browser.quit()
+    assert alert.text == "Message received!"
