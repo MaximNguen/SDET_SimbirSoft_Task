@@ -12,6 +12,8 @@ class MainPage(BasePage):
     def scroll(self, element):
         self.browser.execute_script("arguments[0].scrollIntoView();", element)
 
+    def quit(self):
+        self.browser.quit()
 
     def nameInput(self):
         name = self.find(NAMEINPUT[0], NAMEINPUT[1])
