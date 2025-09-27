@@ -8,6 +8,8 @@ class TestAllEmelentsExist:
     def setup(self, browser):
         self.main_page = MainPage(browser)
         self.main_page.open()
+        yield self.main_page
+        self.main_page.quit()
 
     # Я сделаю 2 набора, 1 тест сразу все кнопки проверяет, другой по отдельности, чтобы не тратить время на ожидание загрузки :/
     def test_nameinput_exist(self):
