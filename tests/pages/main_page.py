@@ -91,3 +91,10 @@ class MainPage(BasePage):
     def check_state_alert(self):
         alert = self.browser.switch_to.alert
         return alert.text
+
+    def check_alert(self):
+        try:
+            alert = self.browser.switch_to.alert
+            return True
+        except:
+            return False
