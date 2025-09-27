@@ -7,6 +7,8 @@ class TestPositiveResult:
     def main_page(self, browser):
         self.main_page = MainPage(browser)
         self.main_page.open()
+        yield self.main_page
+        self.main_page.quit()
 
     @pytest.mark.parametrize("name,password", [
         ("maxim", "9012832"),

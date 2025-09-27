@@ -1,7 +1,6 @@
 from selenium import webdriver
 import pytest
 
-# Сделал для хрома, надо будет добавить еще доп браузеры
 @pytest.fixture()
 def browser():
     chrome_browser = webdriver.Chrome()

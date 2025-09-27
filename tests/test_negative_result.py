@@ -7,9 +7,16 @@ class TestNegativeResult:
     def main_page(self, browser):
         self.main_page = MainPage(browser)
         self.main_page.open()
+        yield self.main_page
+        self.main_page.quit()
 
-    def test_fill_form_without_name(self):
-        self.main_page.passwordInput_send("12345678")
+    @pytest.mark.parametrize("password", [
+        "92138123",
+        "jksdhasd",
+        "hsad127327(@)*(][][;"
+    ])
+    def test_fill_form_without_name(self, password):
+        self.main_page.passwordInput_send(password)
         self.main_page.checkbox1_click()
         self.main_page.checkbox2_click()
         self.main_page.radio1_click()
