@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-NAMEINPUT = (By.ID, "name-input")
+NAMEINPUT = (By.XPATH, "//input[@id='name-input']")
 PASSWORDINPUT = (By.CSS_SELECTOR, "input[type='password']")
 CHECKBOX1 = (By.ID, "drink2") # Moloko
 CHECKBOX2 = (By.ID, "drink3") # Coffee

@@ -80,7 +80,7 @@ class MainPage(BasePage):
         lst = self.find_elements_texts(LIST[0], LIST[1])
         texts = [element.text for element in lst]
         texts = sorted(texts, key=lambda x: len(x))
-        return self.find(MESSAGE[0], MESSAGE[1]).send_keys(texts[-1])
+        return self.message().send_keys(texts[-1])
 
     def submit(self):
         submitButton = self.find(SUBMIT[0], SUBMIT[1])
