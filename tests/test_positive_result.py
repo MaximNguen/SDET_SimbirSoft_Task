@@ -3,6 +3,14 @@ import pytest
 
 # Положительный тест кейс на рассмотрении несколько возможных исходов
 class TestPositiveResult:
+    @classmethod
+    def setup_class(cls):
+        print("\n========= Начало выполнения положительного тест-кейса ==========")
+
+    @classmethod
+    def teardown_class(cls):
+        print("========= Конец выполнения положительного тест-кейса ==========")
+
     @pytest.fixture(autouse=True)
     def main_page(self, browser):
         self.main_page = MainPage(browser)

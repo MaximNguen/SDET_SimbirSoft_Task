@@ -3,6 +3,14 @@ import pytest
 
 # Негативный тест кейс на рассмотрении несколько возможных исходов
 class TestNegativeResult:
+    @classmethod
+    def setup_class(cls):
+        print("\n========= Начало выполнения негативного тест-кейса ==========")
+
+    @classmethod
+    def teardown_class(cls):
+        print("========= Конец выполнения негативного тест-кейса ==========")
+
     @pytest.fixture(autouse=True)
     def main_page(self, browser):
         self.main_page = MainPage(browser)

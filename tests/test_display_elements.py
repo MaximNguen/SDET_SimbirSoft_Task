@@ -4,6 +4,14 @@ import pytest
 # Тесты на проверку наличия элементов для заполнения формы
 class TestAllEmelentsExist:
 
+    @classmethod
+    def setup_class(cls):
+        print("\n========= Начало выполнения тестов по поиску элементов ==========")
+
+    @classmethod
+    def teardown_class(cls):
+        print("========= Конец выполнения тестов по поиску элементов ==========")
+
     @pytest.fixture(autouse=True)
     def setup(self, browser):
         self.main_page = MainPage(browser)
