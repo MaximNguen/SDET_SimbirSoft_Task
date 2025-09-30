@@ -18,19 +18,19 @@ class TestPositiveResult:
         yield self.main_page
         self.main_page.quit()
 
-    @pytest.mark.parametrize("name,password", [
-        ("maxim", "9012832"),
-        ("pasha", "kasljdasds"),
-        ("egor228443", "()*@)(#*!@*#)"),
+    @pytest.mark.parametrize("name,password,mail", [
+        ("maxim", "9012832", "name@example.com"),
+        ("pasha", "kasljdasds", "normalMain@mail.ru"),
+        ("egor228443", "()*@)(#*!@*#)", "supercool@gmail.com"),
     ])
-    def test_fill_form_full(self, name, password):
+    def test_fill_form_full(self, name, password, mail):
         self.main_page.nameInput_send(name)
         self.main_page.passwordInput_send(password)
         self.main_page.checkbox1_click()
         self.main_page.checkbox2_click()
         self.main_page.radio1_click()
         self.main_page.select_click()
-        self.main_page.email_send()
+        self.main_page.email_send(mail)
         self.main_page.send_longest()
         self.main_page.submit_click()
         assert self.main_page.check_state_alert() == 'Message received!'

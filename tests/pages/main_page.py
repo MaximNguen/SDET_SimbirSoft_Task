@@ -1,3 +1,5 @@
+import re
+
 from pages.base_page import BasePage
 from pages.elements import *
 from selenium.webdriver.support.ui import Select
@@ -69,7 +71,11 @@ class MainPage(BasePage):
         return email1
 
     def email_send(self, mail):
-        return self.email().send_keys(mail)
+        pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        if re.match(pattern, mail):
+            return self.email().send_keys(mail)
+        else:
+            raise ValueError(f'Ваша почта - {mail} не соответствует формату name@example.com')
 
     def message(self):
         mess = self.find(MESSAGE[0], MESSAGE[1])
