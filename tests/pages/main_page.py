@@ -12,6 +12,8 @@ class MainPage(BasePage):
     def scroll(self, element):
         self.browser.execute_script("arguments[0].scrollIntoView();", element)
 
+    def quit(self):
+        self.browser.quit()
 
     def nameInput(self):
         name = self.find(NAMEINPUT[0], NAMEINPUT[1])
@@ -66,8 +68,8 @@ class MainPage(BasePage):
         self.scroll(email1)
         return email1
 
-    def email_send(self):
-        return self.email().send_keys(EMAILEXAMPLE)
+    def email_send(self, mail):
+        return self.email().send_keys(mail)
 
     def message(self):
         mess = self.find(MESSAGE[0], MESSAGE[1])
@@ -78,7 +80,7 @@ class MainPage(BasePage):
         lst = self.find_elements_texts(LIST[0], LIST[1])
         texts = [element.text for element in lst]
         texts = sorted(texts, key=lambda x: len(x))
-        return self.find(MESSAGE[0], MESSAGE[1]).send_keys(texts[-1])
+        return self.message().send_keys(texts[-1])
 
     def submit(self):
         submitButton = self.find(SUBMIT[0], SUBMIT[1])
