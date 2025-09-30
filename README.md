@@ -78,7 +78,7 @@
 </ul>
 <strong>Ожидаемый результат</strong> - Окно сообщения Alert с текстом "Message received!" не появилось и сайт скроллит к полю "Name"
 <h2>Результат тестов</h2>
-![image alt](https://github.com/MaximNguen/SDET_SimbirSoft_Task/blob/main/result.jpg?raw=true)
+![image alt](https://raw.githubusercontent.com/MaximNguen/SDET_SimbirSoft_Task/refs/heads/main/result.jpg)
 <h2>Установка и запуск</h2>
 <ol>
     <li>Клонировать репозиторий</li>
