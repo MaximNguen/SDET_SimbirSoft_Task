@@ -78,7 +78,8 @@
 </ul>
 <strong>Ожидаемый результат</strong> - Окно сообщения Alert с текстом "Message received!" не появилось и сайт скроллит к полю "Name"
 <h2>Результат тестов</h2>
-![image alt](https://raw.githubusercontent.com/MaximNguen/SDET_SimbirSoft_Task/refs/heads/main/result.jpg)
+![image alt](https://raw.githubusercontent.com/MaximNguen/SDET_SimbirSoft_Task/refs/heads/main/result.jpg)</br>
+На фото можно увидеть результат, что 22 тестов прошли, 1 не прошел! Это связано с тем, что в негативном кейс я специально сделал так, что ввел почту верного формата (А для негативного тест кейса нужны и неверные данные), что и привел к выбросу исключения, тот в свою очередь остановил работу теста в провалом
 <h2>Установка и запуск</h2>
 <ol>
     <li>Клонировать репозиторий</li>
