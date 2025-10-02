@@ -131,4 +131,4 @@ class MainPage(BasePage):
                 return True
         except:
             with allure.step("Нам алерт не выпал, тест относится к негативному тест кейсу"):
-            return False
+                return False
