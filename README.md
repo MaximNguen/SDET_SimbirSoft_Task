@@ -86,7 +86,13 @@ FAILED test_negative_result.py::TestNegativeResult::test_fill_form_without_name[
 <code>=================================== 23 passed in 1045.73s (0:17:25) ===============================</code></br>
 А если поставить все параметры верно, то получаем ожидаемые результаты всех тестов
 
-
+<h2>Отчеты на Allure</h2>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/MaximNguen/SDET_SimbirSoft_Task/main/images-results/screenshot1.jpg" width="100%">
+  <img src="https://raw.githubusercontent.com/MaximNguen/SDET_SimbirSoft_Task/main/images-results/screenshot2.jpg" width="100%">
+  <br>
+  <img src="https://raw.githubusercontent.com/MaximNguen/SDET_SimbirSoft_Task/main/images-results/screenshot3.jpg" width="100%">
+</div>
 <h2>Установка и запуск</h2>
 <ol>
     <li>Клонировать репозиторий</li>
