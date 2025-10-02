@@ -1,3 +1,5 @@
+import allure
+
 from pages.main_page import MainPage
 import pytest
 
@@ -12,12 +14,14 @@ class TestPositiveResult:
         print("========= Конец выполнения положительного тест-кейса ==========")
 
     @pytest.fixture(autouse=True)
-    def main_page(self, browser):
+    def setup(self, browser, url="https://practice-automation.com/form-fields/"):
         self.main_page = MainPage(browser)
-        self.main_page.open()
+        self.main_page.open(url)
         yield self.main_page
         self.main_page.quit()
 
+    @allure.feature("Positive Test-Case")
+    @allure.story("Ввод всех полей")
     @pytest.mark.parametrize("name,password,mail", [
         ("maxim", "9012832", "name@example.com"),
         ("pasha", "kasljdasds", "normalMain@mail.ru"),
@@ -33,8 +37,11 @@ class TestPositiveResult:
         self.main_page.email_send(mail)
         self.main_page.send_longest()
         self.main_page.submit_click()
-        assert self.main_page.check_state_alert() == 'Message received!'
+        with allure.step("Достоверимся, что алерт с сообщением выпал"):
+            assert self.main_page.check_state_alert() == 'Message received!'
 
+    @allure.feature("Positive Test-Case")
+    @allure.story("Ввод только требующихся полей")
     @pytest.mark.parametrize("name", [
         "klasjdsad",
         "skjdsadasdd",
@@ -43,8 +50,11 @@ class TestPositiveResult:
     def test_fill_only_required(self, name):
         self.main_page.nameInput_send(name)
         self.main_page.submit_click()
-        assert self.main_page.check_state_alert() == 'Message received!'
+        with allure.step("Достоверимся, что алерт с сообщением выпал"):
+            assert self.main_page.check_state_alert() == 'Message received!'
 
+    @allure.feature("Positive Test-Case")
+    @allure.story("Неполный ввод полей, в том числе имени")
     @pytest.mark.parametrize("name", [
         "91283990()*@(*!@$",
         "[;];;;];]",
@@ -55,4 +65,5 @@ class TestPositiveResult:
         self.main_page.nameInput_send(name)
         self.main_page.select_click()
         self.main_page.submit_click()
-        assert self.main_page.check_state_alert() == 'Message received!'
+        with allure.step("Достоверимся, что алерт с сообщением выпал"):
+            assert self.main_page.check_state_alert() == 'Message received!'
