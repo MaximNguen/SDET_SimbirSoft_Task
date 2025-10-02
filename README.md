@@ -100,4 +100,5 @@ FAILED test_negative_result.py::TestNegativeResult::test_fill_form_without_name[
     <li>Запустить тесты с нужными вам параметрами: <code>pytest -v -s</code> - это выдаст подробное описание тестов и все print</li>
     <li>Если вам нужен конректные тесты (Поиск элементов, Положительные или Негативные тесты), то запускайте так - <code>cd tests</code>, потом <code>pytest *Название файла*</code></li>
     <li>Если вам нужен тест какой-то из тест-кейса (функцию), то запускайте так - <code>cd tests</code>, потом <code>pytest *Название файла*::*Название функции*</code></li>
+    <li>Если сайт из allure-report не открывается, можете локально запустить свой - <code>allure serve results</code></li>
 </ol>
