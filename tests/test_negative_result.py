@@ -19,7 +19,7 @@ class TestNegativeResult:
         self.main_page.quit()
 
     @pytest.mark.parametrize("password,mail", [
-        ("92138123", "normalMain@mail.ru"),
+        ("92138123", "jkashdsajkdsamail.ru"),
         ("jksdhasd", "213213.com"),
         ("hsad127327(@)*(][][;", "@gamil.cim"),
     ])

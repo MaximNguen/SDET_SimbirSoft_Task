@@ -1,5 +1,7 @@
 from selenium import webdriver
 import pytest
+from selenium.webdriver.chrome.options import Options
+
 
 @pytest.fixture()
 def browser():
