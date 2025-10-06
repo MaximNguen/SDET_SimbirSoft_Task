@@ -23,7 +23,7 @@ class TestPositiveResult:
     @allure.feature("Positive Test-Case")
     @allure.story("Ввод всех полей")
     @pytest.mark.parametrize("name,password,mail", [
-        ("maxim", "9012832", "name@example.com"),
+        ("maxim", "9012832", "nameлфоывыфв.com"),
         ("pasha", "kasljdasds", "normalMain@mail.ru"),
         ("egor228443", "()*@)(#*!@*#)", "supercool@gmail.com"),
     ])
@@ -34,7 +34,13 @@ class TestPositiveResult:
         self.main_page.checkbox2_click()
         self.main_page.radio1_click()
         self.main_page.select_click()
-        self.main_page.email_send(mail)
+        try:
+            self.main_page.email_send(mail)
+            if self._is_valid_email(mail):
+                with allure.step("Тест не пройдет, так как в положительном тест кейсе обнаружен неверный формат почты"):
+                    pytest.fail(f"Почта {mail} не выдал ошибку при вводе неверного формата")
+        except ValueError as a:
+            print(f"Ожидаемое исключение для почты {mail}: {a}")
         self.main_page.send_longest()
         self.main_page.submit_click()
         with allure.step("Достоверимся, что алерт с сообщением выпал"):
@@ -67,3 +73,10 @@ class TestPositiveResult:
         self.main_page.submit_click()
         with allure.step("Достоверимся, что алерт с сообщением выпал"):
             assert self.main_page.check_state_alert() == 'Message received!'
+
+    @allure.feature("Positive Test-Case")
+    @allure.story("Валидатор почты")
+    def _is_valid_email(self, email):  # пишем тут метод, потому что он только тут нужен
+        import re
+        pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        return re.match(pattern, email) is None
