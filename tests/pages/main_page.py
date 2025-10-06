@@ -52,7 +52,7 @@ class MainPage(BasePage):
             return self.checkbox1().click()
 
     def checkbox2(self):
-        check2 = self.find(CHECKBOX1[0], CHECKBOX1[1])
+        check2 = self.find(CHECKBOX2[0], CHECKBOX2[1])
         self.scroll(check2)
         with allure.step("Ищем вторую нужную ячейку"):
             return check2
