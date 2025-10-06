@@ -23,7 +23,7 @@ class TestNegativeResult:
     @allure.feature("Negative Test-Case")
     @allure.story("Тест по заполнению все полей, кроме имени")
     @pytest.mark.parametrize("password,mail", [
-        ("92138123", "jkashdsajkdsamail.ru"),
+        ("92138123", "name@example.ru"),
         ("jksdhasd", "213213.com"),
         ("hsad127327(@)*(][][;", "@gamil.cim"),
     ])
@@ -37,7 +37,7 @@ class TestNegativeResult:
             self.main_page.email_send(mail)
             if not self._is_valid_email(mail):
                 with allure.step("Тест не пройдет, так как в негативном тест кейсе обнаружен верный формат почты"):
-                    pytest.fail(f"Почта {mail} не выдал ошибку при вводе неверного формата")
+                    pytest.fail(f"Почта {mail} не выдал ошибку при вводе верного формата")
         except ValueError as a:
             print(f"Ожидаемое исключение для почты {mail}: {a}")
         self.main_page.send_longest()
